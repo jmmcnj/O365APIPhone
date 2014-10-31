@@ -1,0 +1,12 @@
+﻿<Application
+    x:Class="CSUnivWin81Apps.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CSUnivWin81Apps">
+    <Application.Resources>
+        <x:String x:Key="ida:ClientID">38d03035-313a-491e-ba69-af62d0db27cc</x:String>
+    
+        <x:String x:Key="ida:AuthorizationUri">https://login.windows.net</x:String>
+    </Application.Resources>
+
+</Application>

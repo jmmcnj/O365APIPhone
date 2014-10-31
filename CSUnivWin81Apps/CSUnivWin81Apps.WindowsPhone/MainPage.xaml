@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="CSUnivWin81Apps.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CSUnivWin81Apps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Pivot Title="Info Worker">
+        <PivotItem Header="all">          
+        <Grid x:Name="ContentRoot" Margin="19,9.833,19,0" IsTapEnabled="True">
+            <ListView x:Name="itemListView" Margin="0,0,0,10" SelectionMode="Single" IsSwipeEnabled="True" CanDragItems="True" CanReorderItems="True" SelectionChanged="itemListView_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="110" Margin="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                                <Image Source="Assets/Square71x71Logo.png" Stretch="UniformToFill"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                <TextBlock Text="{Binding Title}"/>
+                                <TextBlock Text="{Binding Author}"/>
+                                <TextBlock Text="{Binding ApprovalStatus}"/>
+                                <TextBlock Text="{Binding TimeLastModified}" MaxHeight="60"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        </PivotItem>
+        <PivotItem Header="Approve">
+            <Grid x:Name="ContentRootApprove" Margin="19,9.833,19,0" IsTapEnabled="True">
+                <ListView x:Name="itemListViewApprove" Margin="0,0,0,10" SelectionMode="Single" IsSwipeEnabled="True" CanDragItems="True" CanReorderItems="True" SelectionChanged="itemListViewApproved_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="110" Margin="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
+                                    <Image Source="Assets/Square71x71Logo.png" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+                                    <TextBlock Text="{Binding Title}"/>
+                                    <TextBlock Text="{Binding Author}"/>
+                                    <TextBlock Text="{Binding ApprovalStatus}"/>
+                                    <TextBlock Text="{Binding TimeLastModified}" MaxHeight="60"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </PivotItem>
+    </Pivot>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="RefreshAppBarButton" x:Name="RefreshAppBarButton" Label="refresh list" Icon="Refresh" Click="RefreshAppBarButton_Click" ToolTipService.ToolTip="Click to Refresh list of documents in pending status"/>
+            <AppBarButton x:Uid="RemoveAppBarButton" x:Name="RemoveAppBarButton" Label="approve" Icon="Accept" Click="RemoveAppBarButton_Click" ToolTipService.ToolTip="Click to approve selected docs">
+                <Button.Flyout>
+                    <Flyout>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource BaseTextBlockStyle}">
+                    All items selected will be approved.
+                            </TextBlock>
+                            <Button Click="DeleteConfirmation_Click" Margin="0,5,0,0">
+                                Approve my docs
+                            </Button>
+                            
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
