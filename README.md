@@ -10,6 +10,7 @@ Follow these steps to get the app running:
 1. Configure all of the class variables in the following classes:
 
   a. MainPage.xaml.cs
+  
   b. SharedProject/O365APIS/O365APISites
   
 2. replace tenant with your O365 domain you are using such as https://<tenant>.onmicrosoft.com or https://<tenant>.sharepoint.com
